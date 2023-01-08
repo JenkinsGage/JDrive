@@ -39,7 +39,7 @@ Future<String?> findDownloadPath() async {
   if (Platform.isAndroid) {
     return "/storage/emulated/0/JDriveDownload/";
   } else {
-    var directory = await getApplicationDocumentsDirectory();
-    return '${directory.path}${Platform.pathSeparator}JDriveDownload';
+    var directory = await getDownloadsDirectory();
+    return '${directory!.path}${Platform.pathSeparator}JDriveDownload${Platform.pathSeparator}';
   }
 }

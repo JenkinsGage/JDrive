@@ -47,9 +47,20 @@ Future<void> downloadFile(BuildContext context, File file) async {
     print('Starting Downloading');
     try {
       await dio.download(server.apiDownload + file.id, '${saveDir.path}${file.name}');
-      print('Download Finished');
+      print('Download Finished ->${saveDir.path}${file.name}');
     } catch (e) {
       print(e);
     }
   }
+}
+
+Future<Response<dynamic>?> updateFile(File oldFile, File newFile) async {
+  try {
+    var response = await dio.put('${server.apiFiles}${oldFile.id}/',
+        data: {'Access': newFile.accessibleUsersId, 'Name': newFile.name, 'Folder': newFile.folder});
+    return response;
+  } catch (e) {
+    print(e);
+  }
+  return null;
 }

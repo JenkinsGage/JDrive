@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'server_spec.dart' as server;
 import 'network.dart' as network;
 import 'models.dart';
-import 'folder_view.dart';
+import 'widgets/folder_tile.dart';
 
 class DriveRoot extends StatefulWidget {
   const DriveRoot({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class _DriveRootState extends State<DriveRoot> {
                 itemCount: snapshot.data?.length,
                 itemBuilder: (context, index) {
                   Folder folder = snapshot.data![index];
-                  return buildFolderWidget(context, folder);
+                  return FolderTile(folder: folder);
                 });
           } else if (snapshot.hasError) {
             return Center(child: Text("${snapshot.error}"));

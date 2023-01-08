@@ -5,6 +5,7 @@ const apiItems = "items/";
 const apiRoot = "root/";
 const apiFolders = "folders/";
 const apiDownload = "download/";
+const apiFiles = "files/";
 
 String authToken = "";
 

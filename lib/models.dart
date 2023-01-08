@@ -36,17 +36,17 @@ class Folder {
 }
 
 class File {
-  final String id;
-  final int ownerId;
-  final String name;
-  final List<dynamic> accessibleUsersId;
-  final bool isSharable;
-  final String type;
+  String id;
+  int ownerId;
+  String name;
+  List<dynamic> accessibleUsersId;
+  bool isSharable;
+  String type;
 
-  final String uploadedTime;
-  final String hash;
-  final int size;
-  final dynamic folder;
+  String uploadedTime;
+  String hash;
+  int size;
+  dynamic folder;
 
   File(this.id, this.ownerId, this.name, this.accessibleUsersId, this.isSharable, this.type, this.uploadedTime,
       this.hash, this.size, this.folder);
@@ -54,5 +54,10 @@ class File {
   factory File.fromJson(Map<String, dynamic> json) {
     return File(json['Id'], json['Owner'], json['Name'], json['Access'], json['IsSharable'], json['Type'],
         json['UploadedTime'], json['Hash'], json['Size'], json['Folder']);
+  }
+
+  factory File.clone(File source) {
+    return File(source.id, source.ownerId, source.name, source.accessibleUsersId, source.isSharable, source.type,
+        source.uploadedTime, source.hash, source.size, source.folder);
   }
 }
